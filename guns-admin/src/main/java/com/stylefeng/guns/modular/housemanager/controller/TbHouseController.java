@@ -1,6 +1,9 @@
 package com.stylefeng.guns.modular.housemanager.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.core.util.ToolUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +63,16 @@ public class TbHouseController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return tbHouseService.selectList(null);
+        // 判断condition是否有值
+        if(ToolUtil.isEmpty(condition)){
+            //如果没有值，则表示查询全部
+            return tbHouseService.selectList(null);
+        }else{
+            // 如果有值，则认为是按业务名称进行模糊查询
+            EntityWrapper<TbHouse> entityWrapper = new EntityWrapper<>();
+            Wrapper<TbHouse> wrapper = entityWrapper.like("house_user", condition);
+            return tbHouseService.selectList(wrapper);
+        }
     }
 
     /**
