@@ -1,4 +1,4 @@
-package com.stylefeng.guns.modular.houseManager.service;
+package com.stylefeng.guns.modular.housemanager.service;
 
 import com.stylefeng.guns.modular.system.model.TbHouse;
 import com.baomidou.mybatisplus.service.IService;

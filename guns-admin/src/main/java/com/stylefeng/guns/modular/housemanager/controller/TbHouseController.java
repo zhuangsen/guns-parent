@@ -1,4 +1,4 @@
-package com.stylefeng.guns.modular.houseManager.controller;
+package com.stylefeng.guns.modular.housemanager.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import org.springframework.stereotype.Controller;
@@ -10,19 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.stylefeng.guns.core.log.LogObjectHolder;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.TbHouse;
-import com.stylefeng.guns.modular.houseManager.service.ITbHouseService;
+import com.stylefeng.guns.modular.housemanager.service.ITbHouseService;
 
 /**
  * 房屋管理控制器
  *
  * @author fengshuonan
- * @Date 2018-11-08 13:28:03
+ * @Date 2018-11-08 13:37:55
  */
 @Controller
 @RequestMapping("/tbHouse")
 public class TbHouseController extends BaseController {
 
-    private String PREFIX = "/houseManager/tbHouse/";
+    private String PREFIX = "/housemanager/tbHouse/";
 
     @Autowired
     private ITbHouseService tbHouseService;

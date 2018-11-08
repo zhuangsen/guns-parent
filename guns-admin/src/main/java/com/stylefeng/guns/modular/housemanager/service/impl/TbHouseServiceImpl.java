@@ -1,8 +1,8 @@
-package com.stylefeng.guns.modular.houseManager.service.impl;
+package com.stylefeng.guns.modular.housemanager.service.impl;
 
 import com.stylefeng.guns.modular.system.model.TbHouse;
 import com.stylefeng.guns.modular.system.dao.TbHouseMapper;
-import com.stylefeng.guns.modular.houseManager.service.ITbHouseService;
+import com.stylefeng.guns.modular.housemanager.service.ITbHouseService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
