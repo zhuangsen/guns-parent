@@ -1,0 +1,6 @@
+# AutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+GlobalController,\
+DefaultFastjsonConfig,\
+DefaultProperties,\
+DefaultWebConfig
