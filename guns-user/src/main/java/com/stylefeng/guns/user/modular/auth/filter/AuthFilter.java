@@ -1,10 +1,10 @@
-package com.stylefeng.guns.gateway.modular.auth.filter;
+package com.stylefeng.guns.user.modular.auth.filter;
 
 import com.stylefeng.guns.core.base.tips.ErrorTip;
 import com.stylefeng.guns.core.util.RenderUtil;
-import com.stylefeng.guns.gateway.config.properties.JwtProperties;
-import com.stylefeng.guns.gateway.modular.auth.util.JwtTokenUtil;
-import com.stylefeng.guns.gateway.common.exception.BizExceptionEnum;
+import com.stylefeng.guns.user.config.properties.JwtProperties;
+import com.stylefeng.guns.user.modular.auth.util.JwtTokenUtil;
+import com.stylefeng.guns.user.common.exception.BizExceptionEnum;
 import io.jsonwebtoken.JwtException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,18 +39,6 @@ public class AuthFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
             return;
         }
-
-
-        // 配置忽略列表
-        String ignoreUrl = jwtProperties.getIgnoreUrl();
-        String[] ignoreUrls = ignoreUrl.split(",");
-        for (int i = 0; i < ignoreUrls.length; i++) {
-            if(request.getServletPath().equalsIgnoreCase(ignoreUrls[i])){
-                chain.doFilter(request, response);
-                return;
-            }
-        }
-
         final String requestHeader = request.getHeader(jwtProperties.getHeader());
         String authToken = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer ")) {

@@ -1,13 +1,11 @@
-package com.stylefeng.guns.gateway.modular.auth.controller;
+package com.stylefeng.guns.user.modular.auth.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.stylefeng.guns.api.user.UserAPI;
 import com.stylefeng.guns.core.exception.GunsException;
-import com.stylefeng.guns.gateway.common.exception.BizExceptionEnum;
-import com.stylefeng.guns.gateway.modular.auth.controller.dto.AuthRequest;
-import com.stylefeng.guns.gateway.modular.auth.controller.dto.AuthResponse;
-import com.stylefeng.guns.gateway.modular.auth.util.JwtTokenUtil;
-import com.stylefeng.guns.gateway.modular.auth.validator.IReqValidator;
+import com.stylefeng.guns.user.common.exception.BizExceptionEnum;
+import com.stylefeng.guns.user.modular.auth.controller.dto.AuthRequest;
+import com.stylefeng.guns.user.modular.auth.controller.dto.AuthResponse;
+import com.stylefeng.guns.user.modular.auth.util.JwtTokenUtil;
+import com.stylefeng.guns.user.modular.auth.validator.IReqValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,12 +28,8 @@ public class AuthController {
     @Resource(name = "simpleValidator")
     private IReqValidator reqValidator;
 
-    @Reference(interfaceClass = UserAPI.class)
-    private UserAPI userAPI;
-
     @RequestMapping(value = "${jwt.auth-path}")
     public ResponseEntity<?> createAuthenticationToken(AuthRequest authRequest) {
-        userAPI.login(authRequest.getUserName(), authRequest.getPassword());
 
         boolean validate = reqValidator.validate(authRequest);
 
